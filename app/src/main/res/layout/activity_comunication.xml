@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kowshik.bluetooth.comunication">
+
+        <Button
+            android:id="@+id/send2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="109dp"
+            android:text="hello"
+            app:layout_constraintBottom_toTopOf="@+id/send3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/send3"
+            app:layout_constraintTop_toBottomOf="@+id/msg" />
+
+        <Button
+            android:id="@+id/send1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="109dp"
+            android:text="hi"
+            app:layout_constraintBottom_toTopOf="@+id/send3"
+            app:layout_constraintEnd_toStartOf="@+id/send3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/msg" />
+
+        <Button
+            android:id="@+id/send4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bye"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send3"
+            app:layout_constraintHorizontal_bias="0.616"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/send1"
+            app:layout_constraintVertical_bias="0.367" />
+
+        <Button
+            android:id="@+id/send3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="224dp"
+            android:text="lala"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/msg" />
+
+        <Button
+            android:id="@+id/send5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="yea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.351"
+            app:layout_constraintStart_toEndOf="@+id/send3"
+            app:layout_constraintTop_toBottomOf="@+id/send2"
+            app:layout_constraintVertical_bias="0.367" />
+
+        <TextView
+            android:id="@+id/msg"
+            android:layout_width="399dp"
+            android:layout_height="186dp"
+            android:hint="Message"
+            android:textAlignment="center"
+            android:textColor="?android:attr/textColorLink"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06" />
+
+
+</android.support.constraint.ConstraintLayout>
