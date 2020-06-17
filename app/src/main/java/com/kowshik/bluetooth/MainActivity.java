@@ -88,8 +88,14 @@ public class MainActivity extends AppCompatActivity {
         listen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServerClass serverClass = new ServerClass();
-                serverClass.start();
+                if (!bluetoothAdapter.isEnabled()) {
+                    Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(enableIntent, REQUEST_ENABLE_BLUETOOTH);//this will be done in the background and the result is given.
+                }
+                else {
+                    ServerClass serverClass = new ServerClass();
+                    serverClass.start();
+                }
             }
         });
 
