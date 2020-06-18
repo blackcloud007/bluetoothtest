@@ -18,8 +18,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
@@ -219,6 +217,22 @@ public class MainActivity extends AppCompatActivity {
                 message.what = STATE_CONNECTION_FAILED;
                 handler.sendMessage(message);
             }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothAdapter.disable();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!bluetoothAdapter.isEnabled()) {
+            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BLUETOOTH);//this will be done in the background and the result is given.
         }
     }
 }
