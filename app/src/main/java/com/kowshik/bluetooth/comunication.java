@@ -22,12 +22,11 @@ public class comunication extends AppCompatActivity {
     TextView msg_box;
     SendReceive sendReceive;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunication);
-
-        Intent intent = getIntent();
         BluetoothSocket socket=par_socket.getSocket();
         sendReceive=new SendReceive(socket);
         sendReceive.start();
@@ -39,41 +38,42 @@ public class comunication extends AppCompatActivity {
         send4=(Button) findViewById(R.id.send4);
         send5=(Button) findViewById(R.id.send5);
         msg_box =(TextView) findViewById(R.id.msg);
+        msg_box.setText("Helllllllooooo");
 
         send1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String string= String.valueOf("hi");//writeMsg.getText());
-                sendReceive.write(string.getBytes());
+                String string= new String("hi");//writeMsg.getText());
+                sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
         send2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= String.valueOf("hello");//writeMsg.getText());
-                sendReceive.write(string.getBytes());
+                String string= new String("hel");//writeMsg.getText());
+
+                sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
         send3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= String.valueOf("lalaa");//writeMsg.getText());
-                sendReceive.write(string.getBytes());
+                String string= new String("lala");//writeMsg.getText());
+                sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
         send4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= String.valueOf("bubye");//writeMsg.getText());
-                sendReceive.write(string.getBytes());
+                String string= new String("bubye");//writeMsg.getText());
+                sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
         send5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= String.valueOf("yeah!");//writeMsg.getText());
-                sendReceive.write(string.getBytes());
+                String string= new String("yeah!");//writeMsg.getText());
+                sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
     }
@@ -82,6 +82,7 @@ public class comunication extends AppCompatActivity {
         private final BluetoothSocket bluetoothSocket;
         private final InputStream inputStream;
         private final OutputStream outputStream;
+        private  int aa;
 
         public SendReceive (BluetoothSocket socket)
         {
@@ -102,17 +103,17 @@ public class comunication extends AppCompatActivity {
 
         public void run()
         {
-            byte[] buffer=new byte[1024];
-            int bytes;
+
 
             while (true)
             {
+                aa=1024;
+                byte[] buffer=new byte[aa];
                 try {
 
                     inputStream.read(buffer);
                     String tempMsg=new String(buffer, StandardCharsets.UTF_8);
                     msg_box.setText(tempMsg);
-
                    // String tempMsg =new String(readBuff,0,msg.arg1);
                    // msg_box.setText(tempMsg);
 
@@ -123,10 +124,11 @@ public class comunication extends AppCompatActivity {
             }
         }
 
-        public void write(byte[] bytes)
+        public void write(byte[] bytes,int a)
         {
             try
             {
+                aa=a;
                 outputStream.write(bytes);
             } catch (IOException e)
 

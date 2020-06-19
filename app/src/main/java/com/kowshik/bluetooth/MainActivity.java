@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
                     Message message = Message.obtain();
                     message.what = STATE_CONNECTING;
                     handler.sendMessage(message);
-
                     socket = serverSocket.accept();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -176,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
                     handler.sendMessage(message);
                     Intent intent = new Intent(getApplicationContext(), comunication.class);
                     par_socket.setSocket(socket);
-
                     startActivity(intent);
                     break;
                 }
@@ -204,11 +202,8 @@ public class MainActivity extends AppCompatActivity {
                 Message message = Message.obtain();
                 message.what = STATE_CONNECTED;
                 handler.sendMessage(message);
-
                 Intent intent = new Intent(getApplicationContext(), comunication.class);
                 par_socket.setSocket(socket);
-
-
                 startActivity(intent);
 
             } catch (IOException e) {
@@ -219,12 +214,26 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+/*y
     @Override
     protected void onPause() {
         super.onPause();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         bluetoothAdapter.disable();
+    }
+*/
+    @Override
+    protected void onStop() {
+        super.onStop();
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothAdapter.disable();
+    }
+
+    @Override
+    public boolean isFinishing() {
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothAdapter.disable();
+        return super.isFinishing();
     }
 
     @Override
