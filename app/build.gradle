@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.sarthitechnology.btchat"
+        applicationId "com.kowshik.bluetooth"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
