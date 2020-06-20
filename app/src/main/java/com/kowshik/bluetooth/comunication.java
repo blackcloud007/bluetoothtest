@@ -1,5 +1,6 @@
 package com.kowshik.bluetooth;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -9,9 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -26,7 +25,8 @@ public class comunication extends AppCompatActivity {
     Button send1,send2,send3,send4,send5;
     TextView msg_box;
     SendReceive sendReceive;
-
+    BluetoothAdapter bluetoothAdapter= BluetoothAdapter.getDefaultAdapter();
+    int REQUEST_ENABLE_BLUETOOTH = 1;
     DrawerLayout mydrawerLayout;
 
 
@@ -34,7 +34,6 @@ public class comunication extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comunication);
         setContentView(R.layout.drawerlayout_nav);
 
         mydrawerLayout=findViewById(R.id.drawerlayout);
@@ -76,7 +75,7 @@ public class comunication extends AppCompatActivity {
         send2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= new String("hel");//writeMsg.getText());
+                String string= new String("hello");//writeMsg.getText());
 
                 sendReceive.write(string.getBytes(),string.getBytes().length);
             }
@@ -91,14 +90,14 @@ public class comunication extends AppCompatActivity {
         send4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= new String("bubye");//writeMsg.getText());
+                String string= new String("bye");//writeMsg.getText());
                 sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
         send5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String string= new String("yeah!");//writeMsg.getText());
+                String string= new String("yea");//writeMsg.getText());
                 sendReceive.write(string.getBytes(),string.getBytes().length);
             }
         });
@@ -164,4 +163,19 @@ public class comunication extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bluetoothAdapter.disable();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!bluetoothAdapter.isEnabled()) {
+            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BLUETOOTH);
+        }
+
+    }
 }
