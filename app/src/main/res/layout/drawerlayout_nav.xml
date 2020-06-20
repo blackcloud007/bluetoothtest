@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kowshik.bluetooth.comunication">
+    android:background="#173559"
+    android:fitsSystemWindows="true"
+    android:theme="@android:style/Theme.NoTitleBar">
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3F3E50"
+        android:theme="@android:style/Theme.NoTitleBar"
+        tools:context="com.kowshik.bluetooth.comunication">
 
         <Button
             android:id="@+id/send2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginTop="109dp"
+            android:fontFamily="@font/archivo_narrow_bold_italic"
             android:text="hello"
+            android:background="#151517"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/send3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/send3"
@@ -19,11 +34,16 @@
 
         <Button
             android:id="@+id/send1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="109dp"
+
+            android:fontFamily="@font/archivo_narrow_bold_italic"
             android:text="hi"
+            android:background="#151517"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#774D4D"
             app:layout_constraintBottom_toTopOf="@+id/send3"
             app:layout_constraintEnd_toStartOf="@+id/send3"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +51,11 @@
 
         <Button
             android:id="@+id/send4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="#151517"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/archivo_narrow_bold_italic"
             android:text="bye"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/send3"
@@ -43,9 +66,12 @@
 
         <Button
             android:id="@+id/send3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginTop="224dp"
+            android:background="#151517"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/archivo_narrow_bold_italic"
             android:text="lala"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -54,8 +80,11 @@
 
         <Button
             android:id="@+id/send5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="#151517"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/archivo_narrow_bold_italic"
             android:text="yea"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,9 +97,12 @@
             android:id="@+id/msg"
             android:layout_width="399dp"
             android:layout_height="186dp"
+            android:background="#9597A3"
+            android:fontFamily="sans-serif-black"
             android:hint="Message"
             android:textAlignment="center"
             android:textColor="?android:attr/textColorLink"
+            android:textColorLink="#000000"
             android:textSize="30sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -80,4 +112,19 @@
             app:layout_constraintVertical_bias="0.06" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:itemTextColor="#0727FD"
+
+        app:menu="@menu/drawer_view"
+
+        />
+
+</android.support.v4.widget.DrawerLayout>
